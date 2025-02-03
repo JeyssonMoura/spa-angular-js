@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="spaApp">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SPA com AngularJS 1.5.5</title>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("service-worker.js")
+          .then(function (reg) {
+            console.log("Service Worker registrado com sucesso!", reg);
+          })
+          .catch(function (err) {
+            console.log("Falha ao registrar o Service Worker:", err);
+          });
+      }
+    </script>
+
+    <base href="/spa-angular-js/" />
+
+    <script src="assets/js/lib/angular.min.js"></script>
+    <script src="assets/js/lib/angular-route.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/controllers/home.ctrl.js"></script>
+    <script src="assets/js/controllers/about.ctrl.js"></script>
+    <script src="assets/js/controllers/contact.ctrl.js"></script>
+  </head>
+  <body ng-controller="MainController">
+    <nav>
+      <a href="#/">Home</a> | <a href="#/about">Sobre</a> |
+      <a href="#/contact">Contato</a>
+    </nav>
+
+    <div ng-view></div>
+  </body>
+</html>
